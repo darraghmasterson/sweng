@@ -30,6 +30,24 @@ public class LCATest {
 		Assert.assertEquals("LCA(0,1) ", -1 , tree.findLCA(0, 1));
 	}
 	
+	@Test
+	public void testNonExistingNodes()
+	{
+		BinaryTree tree = new BinaryTree();
+		tree.root = new Node(1); 
+        tree.root.left = new Node(2); 
+        tree.root.right = new Node(3); 
+        tree.root.left.left = new Node(4); 
+        tree.root.left.right = new Node(5); 
+        tree.root.right.left = new Node(6); 
+        tree.root.right.right = new Node(7);
+        
+        Assert.assertEquals("LCA(1,0), 0 missing ", -1, tree.findLCA(1, 0));
+        Assert.assertEquals("LCA(8,0), both missing ", -1, tree.findLCA(8, 0));
+        
+        
+	}
+	
 	
 
 }
