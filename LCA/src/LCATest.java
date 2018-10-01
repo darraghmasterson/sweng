@@ -28,7 +28,6 @@ public class LCATest {
 	{
 		BinaryTree tree = new BinaryTree();
 		Assert.assertEquals("LCA(0,1) ", -1 , tree.findLCA(0, 1));
-		
 	}
 	
 	
