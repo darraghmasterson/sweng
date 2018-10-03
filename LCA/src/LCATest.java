@@ -1,5 +1,10 @@
 import static org.junit.Assert.*;
 
+import java.util.Random;
+
+import static java.lang.Object.*;
+
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -27,7 +32,7 @@ public class LCATest {
 	public void testEmptyTree()
 	{
 		BinaryTree tree = new BinaryTree();
-		Assert.assertEquals("LCA(0,1) ", -1 , tree.findLCA(0, 1));
+		//Assert.assertEquals("LCA(0,1) ", -1 , tree.findLCA(0, 1));
 	}
 	
 	@Test
@@ -44,10 +49,32 @@ public class LCATest {
         
         Assert.assertEquals("LCA(1,0), 0 missing ", -1, tree.findLCA(1, 0));
         Assert.assertEquals("LCA(8,0), both missing ", -1, tree.findLCA(8, 0));
-        
-        
+            
 	}
 	
+	@Test
+	public void testBigTree()
+	{
+		BinaryTree tree = new BinaryTree();
+		Node node = new Node(1);
+		tree.root = node;
+		node.left = generate(node);
+		node.right = generate(node);
+		
+	}
 	
+	private Node generate(Node node)
+	{
+		Random random = new Random();
+		
+		System.out.println(node.data);
+		if (random.nextFloat() < .5)  node.left = generate(new Node(node.data+1));
+		
+		if (random.nextFloat() < .5)  node.right = generate(new Node(node.data+1));
+		
+		
+		return node;
+		
+	}
 
 }
