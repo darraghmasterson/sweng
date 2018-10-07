@@ -1,6 +1,16 @@
 import java.util.ArrayList; 
 import java.util.List; 
 
+/*
+ * 
+ * Code from:
+ * Author:Mayank Jaiswal(mayank_24)
+ * Date: 29/09/2018
+ * Available at: https://www.geeksforgeeks.org/lowest-common-ancestor-in-a-binary-tree-set-2-using-parent-pointer/
+ * 
+ * 
+ */
+
 public class BinaryTree  
 { 
   
