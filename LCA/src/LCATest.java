@@ -77,4 +77,9 @@ public class LCATest {
 		
 	}
 
+	@Test
+	public void testDAR()
+	{
+		
+	}
 }
