@@ -9,10 +9,10 @@ public class DAGTest {
 		DAG dag = new DAG(10);
 		dag.addEdge(1, 2);
 		dag.addEdge(2, 3);
-		Assert.assertEquals( dag.isDAG(), true);
+		Assert.assertEquals( true,  dag.isDAG(1));
 		
 		dag.addEdge(2, 1);
-		Assert.assertEquals( dag.isDAG(), false);
+		Assert.assertEquals( false, dag.isDAG(1));
 	}
 	
 	@Test
