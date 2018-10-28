@@ -1,7 +1,8 @@
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
-
+import java.lang.Object;
 /**
  *  The {@code Digraph} class represents a directed graph of vertices
  *  named 0 through <em>V</em> - 1.
@@ -48,7 +49,7 @@ public class DAG {
         }
     }
 
-  
+   
         
     /**
      * Returns the number of vertices in this digraph.
@@ -90,6 +91,16 @@ public class DAG {
         E++;
     }
 
+    public boolean isDAG()
+    {
+		return false;
+    	
+    }
+    
+    public int lca(int x, int y)
+    {
+    	return -1;
+    }
     /**
      * Returns the vertices adjacent from vertex {@code v} in this digraph.
      *
@@ -97,6 +108,7 @@ public class DAG {
      * @return the vertices adjacent from vertex {@code v} in this digraph, as an iterable
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
+    
     public Iterable<Integer> adj(int v) {
         validateVertex(v);
         return adj[v];
