@@ -20,17 +20,17 @@ public class DAGTest {
 	{
 		DAG dag = new DAG(10);
 		dag.addEdge(1, 2);
+		dag.addEdge(2, 3);
 		dag.addEdge(2, 4);
-		dag.addEdge(3, 4);
 		
-		Assert.assertEquals(4, dag.lca(2,3));
+		Assert.assertEquals(2, dag.lca(3,4));
 		
-		dag.addEdge(5, 2);
-		dag.addEdge(6, 5);
-		Assert.assertEquals(2, dag.lca(1,6));
+		dag.addEdge(3, 5);
 		
-		dag.addEdge(7, 3);
-		Assert.assertEquals(4, dag.lca(6,7));
+		Assert.assertEquals(2, dag.lca(3,5));
+		
+		dag.addEdge(1, 6);
+		Assert.assertEquals(1, dag.lca(5,6));
 		
 		
 		
