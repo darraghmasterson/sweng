@@ -1,7 +1,9 @@
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.NoSuchElementException;
+import java.util.Queue;
 import java.lang.Object;
 /**
  *  The {@code Digraph} class represents a directed graph of vertices
@@ -85,22 +87,12 @@ public class DAG {
      */
     public void addEdge(int v, int w) {
     	
-    	DAG temp = this;
-    	
-        temp.validateVertex(v);
-        temp.validateVertex(w);
-        temp.adj[v].add(w);
-        temp.indegree[w]++;
-        temp.E++;
-        
-        if (temp.isDAG(1))
-        {
         	validateVertex(v);
         	validateVertex(w);
         	adj[v].add(w);
         	indegree[w]++;
         	E++;
-        }
+        
         
     }
     
@@ -137,7 +129,48 @@ public class DAG {
     
     public int lca(int x, int y)
     {
+    	DAG reversed = this.reverse();
+    	
+    	ArrayList<Integer> x1 = reversed.bfs(x);
+    	ArrayList<Integer> y1 = reversed.bfs(x);
+    	
+    	for(int i = 0; i < x1.size(); i++)
+    		for (int j = 0; j<y1.size(); j++)
+    		{
+    			if(x1.get(i) == y1.get(j)) return x1.get(i); 
+    		}
+
+    		
+    	
+    	
     	return -1;
+    }
+    
+    public ArrayList<Integer> bfs(int x)
+    {
+    	ArrayList<Integer> list = new ArrayList<Integer>();
+    	LinkedList<Integer> queue = new LinkedList<Integer>();
+    	
+    	boolean[] bool = new boolean[V];
+    	bool[x] = true;
+    	queue.add(x);
+    	
+    	Iterator<Integer> iterator = adj[x].iterator();
+    	while (iterator.hasNext())
+    	{
+    		int n = iterator.next();
+    		if(!bool[n])
+    		{
+    			bool[n] = true;
+    			queue.add(n);
+    		}
+    		
+    	}
+    	
+    	
+    	
+		return list;
+    	
     }
     /**
      * Returns the vertices adjacent from vertex {@code v} in this digraph.
