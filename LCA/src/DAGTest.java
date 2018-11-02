@@ -11,8 +11,9 @@ public class DAGTest {
 		dag.addEdge(2, 3);
 		Assert.assertEquals( true,  dag.isDAG(1));
 		
+		// changed dag.java so no longer possibe to make non-dag
 		dag.addEdge(2, 1);
-		Assert.assertEquals( false, dag.isDAG(1));
+		Assert.assertEquals( true, dag.isDAG(1));
 	}
 	
 	@Test

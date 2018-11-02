@@ -84,12 +84,26 @@ public class DAG {
      * @throws IllegalArgumentException unless both {@code 0 <= v < V} and {@code 0 <= w < V}
      */
     public void addEdge(int v, int w) {
-        validateVertex(v);
-        validateVertex(w);
-        adj[v].add(w);
-        indegree[w]++;
-        E++;
+    	
+    	DAG temp = this;
+    	
+        temp.validateVertex(v);
+        temp.validateVertex(w);
+        temp.adj[v].add(w);
+        temp.indegree[w]++;
+        temp.E++;
+        
+        if (temp.isDAG(1))
+        {
+        	validateVertex(v);
+        	validateVertex(w);
+        	adj[v].add(w);
+        	indegree[w]++;
+        	E++;
+        }
+        
     }
+    
 
     public boolean DFSUtil(int v,boolean visited[]) 
     { 
